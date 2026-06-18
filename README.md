@@ -9,7 +9,7 @@ infrastructure-as-code, module design, and least-privilege security."
 ---
 
 Proof of Production
-<img width="826" height="146" alt="Screenshot 2026-06-17 at 11 05 09 PM" src="https://github.com/user-attachments/assets/60f41a3b-4134-4966-8fcb-97a40c5a83e6" />
+<img width="946" height="130" alt="Screenshot 2026-06-17 at 11 35 40 PM" src="https://github.com/user-attachments/assets/147fc495-137c-4373-818d-b580cae1e444" />
 
 ---
 
