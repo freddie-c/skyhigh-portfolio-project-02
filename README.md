@@ -79,21 +79,14 @@ terraform destroy
 ---
 
 
-## Challenges and solutions
+## Challenges and Solutions
 
-| Challenge | Solution |
-|---|---|
-| 
-The provided `user_data` script used `yum`, `sudo`, and assumed Amazon Linux 2 conventions — it failed on Amazon Linux 2023. | Switched to `dnf`, removed `sudo` (cloud-init already runs as root), and added `systemctl enable nginx` so the service survives a reboot.  
-|
-| 
-The database needed to reach the web tier without exposing it to the whole VPC. | Used `referenced_security_group_id` on the DB ingress rule instead of a CIDR, so access is tied to security-group identity and survives instance IP churn. 
-|
-|
-`terraform init` failed with "Unreadable module directory" — Terraform couldn't find the module at `./modules/vpc`. | The module folder was named `Module` (singular, capitalized) while the source path expected `modules` (plural, lowercase). Renamed the folder to match exactly — Terraform does a literal, case-sensitive path match. 
-|
-|
+Selected `user_data` script used `yum`, `sudo`, and assumed Amazon Linux 2 conventions — it failed on Amazon Linux 2023. Then switched to `dnf`, removed `sudo` (cloud-init already runs as root), and added `systemctl enable nginx` so the service survives a reboot.  
 
+The database needed to reach the web tier without exposing it to the whole VPC. Made and update and used `referenced_security_group_id` on the DB ingress rule instead of a CIDR, so access is tied to security-group identity and survives instance IP churn. 
+
+
+`terraform init` failed with "Unreadable module directory" — Terraform couldn't find the module at `./modules/vpc`. Figured out that the module folder was named `Module` (singular, capitalized) while the source path expected `modules` (plural, lowercase). Renamed the folder to match exactly — Terraform does a literal, case-sensitive path match. 
 
 ---
 
