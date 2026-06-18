@@ -1,0 +1,17 @@
+# Terraform state — NEVER commit (stored in plaintext, may contain secrets)
+*.tfstate
+*.tfstate.*
+
+# Downloaded providers and modules
+.terraform/
+
+# Crash logs
+crash.log
+crash.*.log
+
+# Variable values — may contain your IP, bucket names, or secrets
+*.tfvars
+terraform.tfvars
+
+# DO commit the lock file — it pins provider versions for reproducibility
+!.terraform.lock.hcl
