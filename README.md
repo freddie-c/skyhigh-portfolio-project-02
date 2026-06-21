@@ -6,6 +6,8 @@ two-tier security groups, an nginx web server, and a locked-down S3
 bucket. Built as SkyHigh Academy Project 2 to demonstrate
 infrastructure-as-code, module design, and least-privilege security."
 
+Infrastructure as Code matters because it turns your servers, networks, and security rules into version-controlled text files that build the exact same environment every time eliminating the configuration drift and human error you get from clicking through a console by hand. 
+
 ---
 
 ## Proof of Production
@@ -45,17 +47,18 @@ internet.
 
 ## Deployment steps
 
-> Prerequisite: an AWS account with credentials configured (`aws configure`), Terraform installed, and the remote-state backend already bootstrapped (the `skyhigh-terraform-state` S3 bucket and the DynamoDB lock table must exist before `init`).
+> Prerequisite: an AWS account with credentials configured (`aws configure`), Terraform installed, and the remote-state backend already bootstrapped (the `skyhigh-terraform-state`.
 
 ```bash
 # 1. Clone and enter the project
 git clone https://github.com/freddie-c/skyhigh-portfolio-project-02.git
 cd skyhigh-portfolio-project-02
 
-# 2. Provide variable values
-cp terraform.tfvars.example terraform.tfvars
-#    Edit terraform.tfvars: set project_name, my_ip (your IP as x.x.x.x/32),
+# 2. Create terraform.tfvars at the project root and set your values:
+#      project_name       = "skyhigh-project-02"
+#      my_ip              = "YOUR.IP.HERE/32",
 #    and a globally unique assets_bucket_name.
+#    (terraform.tfvars is gitignored, so each user supplies their own.)
 
 # 3. Initialize — downloads the AWS provider and connects the S3 backend
 terraform init

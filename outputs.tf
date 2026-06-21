@@ -23,7 +23,3 @@ output "s3_bucket_name" {
   value       = aws_s3_bucket.assets.id
 }
 
-variable "project_name" {
-  description = "Name used in tags and resource names"
-  type        = string
-}
